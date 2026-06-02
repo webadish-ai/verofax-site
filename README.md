@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Verofax — Marketing Site (redesign)
 
-## Getting Started
+Lead-generation marketing site for Verofax, rebuilt around **"AI Employees / Agentic AI."**
+Showcases the four solutions — Agentic AI for Web & App, AI + AR, AI-Powered Holobox, and
+Computer Vision Traceability — and funnels visitors into a demo/lead CTA.
 
-First, run the development server:
+## Stack
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4** (brand tokens in `src/app/globals.css`)
+- **Motion** (`motion/react`) for scroll/entrance reveals + **GSAP ScrollTrigger** for parallax
+- **lucide-react** icons, self-hosted **Sora** (display) + **Inter** (body) fonts
 
+Lighthouse (desktop): **Performance 100 · Accessibility 100 · Best Practices 100 · SEO 100**.
+
+## Getting started
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build && npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
+```
+src/
+  app/
+    layout.tsx             # fonts, metadata, header/footer
+    page.tsx               # homepage (composes sections)
+    sitemap.ts / robots.ts
+    solutions/[slug]/      # stub pages for the 4 solutions (SSG)
+  components/
+    site-header.tsx        # sticky, blur-on-scroll nav
+    site-footer.tsx
+    lead-form.tsx          # validated form, UI-only (stub submit)
+    json-ld.tsx            # Organization schema
+    sections/              # hero, solutions-grid, channels-row, industries-grid,
+                           # impact-dashboard, social-proof, lead-cta-banner
+    ui/                    # button, container, reveal, stat-counter, rating-chip, logo-marquee
+  lib/
+    site.ts                # all marketing content (nav, solutions, channels, stats, testimonials, logos)
+    motion.ts / utils.ts
+public/                    # hero video, client + partner logos, brand assets
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content
+All copy/data lives in `src/lib/site.ts` — edit there to change solutions, stats, testimonials,
+nav and logos without touching components.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## TODO (follow-ups, intentionally stubbed)
+- **Leads:** `lead-form.tsx` `onSubmit` logs the payload (incl. UTM params) and shows success.
+  Wire it to a CRM / Calendly / `app/api/lead/route.ts`. "Book a Demo" links to `#contact`.
+- Build the four full solution pages (currently stubs) and Industries/Company/Contact routes.
+- Swap industry gradient cards for photographic imagery when assets are cleared.
+- Add a real OG/Twitter share image.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Assets
+Brand video and logos were pulled from verofax.com into `public/`. Replace with final cleared
+assets before production.

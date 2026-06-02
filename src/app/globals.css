@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Verofax brand design system — "blue, elevated"
+--------------------------------------------------------------------------- */
+@theme {
+  /* Brand palette (derived from the Verofax logo) */
+  --color-navy-950: #060b1a;
+  --color-navy-900: #0a0f1e;
+  --color-navy-800: #0b2a5b;
+  --color-navy-700: #123a7a;
+  --color-brand-600: #1b4f9c;
+  --color-brand-500: #2e7df2;
+  --color-brand-400: #5a9bff;
+  --color-cyan-400: #37c0e8;
+  --color-cyan-300: #6fd8f5;
+
+  --color-ink: #0b1220;
+  --color-muted: #5b6b86;
+  --color-surface: #f5f8ff;
+  --color-line: #e4ecfb;
+
+  --font-display: var(--font-display), "Sora", system-ui, sans-serif;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+
+  --shadow-glow: 0 0 0 1px rgba(46, 125, 242, 0.15), 0 20px 60px -20px rgba(46, 125, 242, 0.45);
+  --shadow-card: 0 1px 2px rgba(11, 18, 32, 0.04), 0 12px 40px -16px rgba(11, 18, 32, 0.18);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: var(--color-line);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-brand-500);
+  color: #fff;
+}
+
+/* Utility: brand gradient text */
+.text-gradient {
+  background: linear-gradient(100deg, var(--color-brand-500) 0%, var(--color-cyan-400) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Utility: glassy card on dark */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+/* Grid backdrop */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(46, 125, 242, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 125, 242, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+/* Aurora blob float */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(2%, -3%) scale(1.05); }
+}
+.animate-float-slow { animation: float-slow 14s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
