@@ -3,6 +3,7 @@ import { Sora, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 const display = Sora({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} antialiased`}>
       <body className="min-h-screen bg-white">
+        <ScrollProgress />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

@@ -28,6 +28,13 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_15%_20%,rgba(46,125,242,0.28),transparent_60%)]" />
       <div className="absolute inset-0 -z-10 bg-grid opacity-[0.25]" />
 
+      {/* Floating glow orbs */}
+      <div className="absolute -left-24 top-1/3 -z-10 h-80 w-80 animate-float-slow rounded-full bg-brand-500/25 blur-3xl" />
+      <div
+        className="absolute right-0 top-1/4 -z-10 h-72 w-72 animate-float-slow rounded-full bg-cyan-400/20 blur-3xl"
+        style={{ animationDelay: "-7s" }}
+      />
+
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
         <motion.div
           variants={staggerParent(0.12, 0.1)}
@@ -71,6 +78,17 @@ export function Hero() {
           </motion.p>
         </motion.div>
       </div>
+
+      {/* Scroll cue */}
+      <a
+        href="#solutions"
+        aria-label="Scroll to solutions"
+        className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 sm:block"
+      >
+        <span className="flex h-9 w-6 items-start justify-center rounded-full border border-white/30 p-1.5">
+          <span className="animate-scroll-cue h-2 w-1 rounded-full bg-white/80" />
+        </span>
+      </a>
     </section>
   );
 }

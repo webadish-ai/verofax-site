@@ -3,6 +3,7 @@ import { TrendingUp, Clock, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { StatCounter } from "@/components/ui/stat-counter";
+import { ImpactChart } from "@/components/ui/impact-chart";
 import { STATS } from "@/lib/site";
 
 export function ImpactDashboard() {
@@ -12,7 +13,7 @@ export function ImpactDashboard() {
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-600">
                 Business impact
               </p>
               <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-navy-900 sm:text-4xl">
@@ -45,7 +46,7 @@ export function ImpactDashboard() {
                   <p className="font-display text-sm font-bold text-navy-900">
                     AI Employee Console
                   </p>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-600">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-700">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
                     Live
                   </span>
@@ -65,28 +66,8 @@ export function ImpactDashboard() {
                   ))}
                 </div>
 
-                {/* Faux trend chart */}
-                <div className="mt-5 rounded-xl bg-navy-950 p-5">
-                  <p className="text-xs text-white/60">Business impact — last 30 days</p>
-                  <svg viewBox="0 0 320 90" className="mt-3 h-24 w-full" preserveAspectRatio="none">
-                    <defs>
-                      <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#2e7df2" stopOpacity="0.4" />
-                        <stop offset="100%" stopColor="#2e7df2" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M0,70 C40,66 60,40 100,44 C140,48 160,20 200,26 C240,32 270,12 320,8"
-                      fill="none"
-                      stroke="#37c0e8"
-                      strokeWidth="2.5"
-                    />
-                    <path
-                      d="M0,70 C40,66 60,40 100,44 C140,48 160,20 200,26 C240,32 270,12 320,8 L320,90 L0,90 Z"
-                      fill="url(#fill)"
-                    />
-                  </svg>
-                </div>
+                {/* Self-drawing trend chart */}
+                <ImpactChart />
 
                 <div className="mt-4 flex items-center gap-3 rounded-xl border border-line p-3">
                   <Image
