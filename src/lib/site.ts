@@ -16,16 +16,26 @@ import {
 } from "lucide-react";
 
 export const CALENDLY_URL = "https://calendly.com/verofax/demo";
-export const BOOK_DEMO_HREF = "#contact";
+export const BOOK_DEMO_HREF = "/contact";
 
-export type NavItem = { label: string; href: string };
+export type NavChild = { label: string; href: string; description?: string };
+export type NavItem = { label: string; href: string; children?: NavChild[] };
 
 export const NAV: NavItem[] = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "Channels", href: "#channels" },
-  { label: "Industries", href: "#industries" },
-  { label: "Impact", href: "#impact" },
-  { label: "Contact", href: "#contact" },
+  {
+    label: "Solutions",
+    href: "/#solutions",
+    children: [
+      { label: "Agentic AI for Web & App", href: "/solutions/agentic-ai-for-web-app", description: "AI agents for sites, apps & portals" },
+      { label: "AI + AR Solutions", href: "/solutions/ai-ar-solutions", description: "Immersive AR, enhanced with AI" },
+      { label: "AI-Powered Holobox", href: "/solutions/ai-powered-holobox", description: "Holographic on-site concierge" },
+      { label: "Computer Vision Traceability", href: "/solutions/computer-vision-traceability", description: "Automated visual quality checks" },
+    ],
+  },
+  { label: "Industries", href: "/industries" },
+  { label: "Use Cases", href: "/use-cases" },
+  { label: "Company", href: "/company" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export type Solution = {

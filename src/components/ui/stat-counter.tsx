@@ -18,12 +18,12 @@ export function StatCounter({
 
   useEffect(() => {
     if (!inView) return;
+    let raf = 0;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
-      setDisplay(value);
-      return;
+      raf = requestAnimationFrame(() => setDisplay(value));
+      return () => cancelAnimationFrame(raf);
     }
-    let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
       const t = Math.min((now - start) / duration, 1);

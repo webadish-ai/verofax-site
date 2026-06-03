@@ -17,17 +17,19 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>() {
     const el = ref.current;
     if (!el || shown) return;
 
+    const reveal = () => setShown(true);
+
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce || typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
+      const raf = requestAnimationFrame(reveal);
+      return () => cancelAnimationFrame(raf);
     }
 
-    // If already in view on mount, reveal immediately.
+    // If already in view on mount, reveal immediately (next frame).
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      setShown(true);
-      return;
+      const raf = requestAnimationFrame(reveal);
+      return () => cancelAnimationFrame(raf);
     }
 
     const observer = new IntersectionObserver(

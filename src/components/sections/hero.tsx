@@ -68,7 +68,7 @@ export function Hero() {
             <Button href={BOOK_DEMO_HREF} size="lg">
               Book a Demo <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button href="#solutions" size="lg" variant="light">
+            <Button href="/use-cases" size="lg" variant="light">
               <Play className="h-4 w-4" /> Explore Use Cases
             </Button>
           </motion.div>

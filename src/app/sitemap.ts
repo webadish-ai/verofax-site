@@ -5,8 +5,14 @@ const BASE = "https://verofax.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const staticRoutes = ["", "/industries", "/use-cases", "/company", "/contact"];
   return [
-    { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    ...staticRoutes.map((path) => ({
+      url: `${BASE}${path}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: path === "" ? 1 : 0.8,
+    })),
     ...SOLUTIONS.map((s) => ({
       url: `${BASE}/solutions/${s.slug}`,
       lastModified: now,

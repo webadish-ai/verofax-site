@@ -78,7 +78,7 @@ export function LeadForm() {
       <Field label="Phone" name="phone" type="tel" placeholder="+971 ..." optional />
       <div className="sm:col-span-2">
         <label className="mb-1.5 block text-sm font-medium text-white/80">
-          What do you want to automate? <span className="text-white/40">(optional)</span>
+          What do you want to automate? <span className="text-white/55">(optional)</span>
         </label>
         <textarea
           name="message"
@@ -123,7 +123,7 @@ function Field({
   return (
     <div>
       <label htmlFor={name} className="mb-1.5 block text-sm font-medium text-white/80">
-        {label} {optional && <span className="text-white/40">(optional)</span>}
+        {label} {optional && <span className="text-white/55">(optional)</span>}
       </label>
       <input
         id={name}

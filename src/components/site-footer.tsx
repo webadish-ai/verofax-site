@@ -8,21 +8,21 @@ const COLUMNS = [
     links: SOLUTIONS.map((s) => ({ label: s.title, href: `/solutions/${s.slug}` })),
   },
   {
-    title: "Industries",
+    title: "Explore",
     links: [
-      { label: "Airports & Airlines", href: "#industries" },
-      { label: "Retail & Malls", href: "#industries" },
-      { label: "Sports & Events", href: "#industries" },
-      { label: "Government & Enterprise", href: "#industries" },
+      { label: "Industries", href: "/industries" },
+      { label: "Use Cases", href: "/use-cases" },
+      { label: "Company", href: "/company" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#" },
-      { label: "Case Studies", href: "#" },
-      { label: "News & Awards", href: "#" },
-      { label: "Contact", href: "#contact" },
+      { label: "About Verofax", href: "/company" },
+      { label: "Case Studies", href: "/use-cases" },
+      { label: "Awards", href: "/company#awards" },
+      { label: "Book a Demo", href: "/contact" },
     ],
   },
 ];
