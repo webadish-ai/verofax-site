@@ -78,8 +78,8 @@ function ConsoleMockup() {
                 <div
                   className={`max-w-[85%] rounded-xl px-3 py-2 text-[11px] leading-relaxed ${
                     msg.role === "ai"
-                      ? "border border-brand-500/25 bg-brand-500/15 text-brand-300"
-                      : "bg-white/10 text-white/80"
+                      ? "bg-brand-600/90 text-white shadow-sm"
+                      : "bg-white/20 text-white/95"
                   }`}
                 >
                   {msg.text}
@@ -116,7 +116,7 @@ function ConsoleMockup() {
       <motion.div
         animate={{ y: [0, -6, 0] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -right-3 top-14 rounded-xl border border-white/15 bg-navy-900/90 px-3 py-2 shadow-lg backdrop-blur-sm"
+        className="absolute -right-4 -top-4 rounded-xl border border-white/15 bg-navy-900/90 px-3 py-2 shadow-lg backdrop-blur-sm"
       >
         <div className="flex items-center gap-1.5">
           <CheckCircle2 className="h-3.5 w-3.5 text-green-400" />
